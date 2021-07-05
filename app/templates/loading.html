@@ -1,0 +1,39 @@
+
+<style>
+body { font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif; margin: 10px;}
+
+.loader {
+  border: 16px solid #f3f3f3; /* Light grey */
+  border-top: 16px solid #3498db; /* Blue */
+  border-radius: 50%;
+  width: 80;
+  height: 80;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+#loader_text{
+  font-size: 14px;
+  font-style: italic;
+}
+</style>
+
+<center>
+<h1> Aquaporin Sequence Segmentation </h1>
+<img src = "static/aquaporins.jpeg", height = 200px />
+</center>
+
+
+<center>
+
+<label id = "loader_text"> Please wait, results are coming soon... </label>
+<div class="loader"  id = "loading"> </div>
+
+
+</center>
+
+<script> window.location.replace('/results?seq={{seq}}&setting={{setting}}'); </script>

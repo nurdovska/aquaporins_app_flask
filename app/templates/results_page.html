@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="static/styles.css">
+</head>
+<body>
+
+<center>
+<h1> Aquaporin Sequence Segmentation </h1>
+<img src = "static/aquaporins.jpeg", height = 200px />
+<br>
+<br>
+<input type="button" onclick="location.href = 'http://127.0.0.1:5000/';" value="Retrun Back" />
+</center>
+
+<h4> Transmembrane helices position:</h4>  
+<table>
+{% for row,name in zip(helix_names, helix_locations) %}	
+<tr>
+	<td>{{name}}</td>
+	<td>{{row}}</td>
+</tr>
+{% endfor %}
+</table>
+
+<h4> Model Prediction:</h4>  
+<img src = "static/legend2.png", weight = 800px, height = 38px />
+<div class="scrollit">
+ <table>
+        <thead>
+
+          <tr>
+            {% for col in column_names %}
+            <th>
+              {{col}}
+             
+            </th>
+            {% endfor %}
+          </tr>
+
+        </thead>
+
+        <tbody>
+          {% for row in row_data %}
+          <tr>
+            {% for col, row_ in zip(column_names, row) %}
+            {% if row_ == "CYTO" %}
+            <td style ="background-color: #39A2FE">{{row_}}</td>
+            {% elif row_ == "PERI" %}
+            <td style ="background-color: #7334A5">{{row_}}</td>
+             {% elif row_ == "L-S" %}
+            <td style ="background-color: #F9F147">{{row_}}</td>
+            {% elif row_ == "L-I" %}
+            <td style ="background-color: #FBB619">{{row_}}</td>
+            {% elif row_ == "P-S" %}
+            <td style ="background-color: #6ADB74">{{row_}}</td>
+            {% elif row_ == "P-I" %}
+            <td style ="background-color: #3E8545">{{row_}}</td>
+            {% elif row_ == "C-S" %}
+            <td style ="background-color: #F8252B">{{row_}}</td>
+            {% elif row_ == "C-I" %}
+            <td style ="background-color: #FAD1B7">{{row_}}</td>
+            {% else %}
+            <td style ="background-color: #F8F8F8">{{row_}}</td>
+           {% endif %}
+            {% endfor %}
+          </tr>
+          {% endfor %}
+
+         
+        </tbody>
+  
+      </table>
+</div>
+
+<br>
+
+<h4> Distribution:</h4>  
+<img src = "{{plot}}", height = 300px />
+
+
+</center>
+</body>
+</html>
+

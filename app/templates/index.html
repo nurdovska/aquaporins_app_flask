@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="static/styles.css">
+</head>
+
+
+<body>
+<center>
+<h1> Aquaporin Sequence Segmentation </h1>
+<img src = "static/aquaporins.jpeg", height = 200px />
+</center>
+
+<center>
+<br>    
+  <form id = "input_form" method="POST" action="/loading" onsubmit="if( _formConfirm_submitted == false ){ _formConfirm_submitted = true;return true }else{ alert('your request is being processed!'); return false;  }">
+<h3>Select a Model</h3>
+<select id="setting" name="setting">
+{% for model in models_list %}
+  <option value="{{model[0]}}">{{model[1]}}</option>
+{% endfor %}
+</select>
+    <br>
+    <br>
+      <label>Insert an aquaporin sequence you want to analyze: </label>
+      <br>
+      <input name="sequence" style="width: 600px;" type="text"> <!-- name = "text"  -->
+       <input type="submit" class="submitBtn" value="Predict"/>
+
+</form>
+</center>
+</body>
+</html>
